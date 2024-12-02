@@ -1,3 +1,12 @@
+<?php
+include "template/header.php";
+include "db.php"; // Arquivo que faz a conexão com o banco de dados
+
+$query = "SELECT * FROM produtores";
+$result = mysqli_query($conn, $query);
+$produtores = mysqli_fetch_all($result, MYSQLI_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,224 +14,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feira de Produtores</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .card-img-top {
-            transition: transform 0.3s;
-        }
-
-        .card-img-top:hover {
-            transform: scale(1.1);
-        }
-    </style>
-</head>
+    <link rel="stylesheet" href="css/index.css">
 <body>
-        
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Feira de Produtores</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Barracas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contato</a>
-                    </li>
-                </ul>
+
+    <!-- Carrossel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/lagoa1.jpg" class="d-block w-100" alt="Milho">
+            </div>
+            <div class="carousel-item">
+                <img src="img/galpao.jpg" class="d-block w-100" alt="Frutas">
+            </div>
+            <div class="carousel-item">
+                <img src="img/lagoaNoite.png" class="d-block w-100" alt="Verduras">
             </div>
         </div>
-    </nav>
-    
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Feira de Produtores</h1>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+    </div>
+
+    <!-- Seção Sobre -->
+    <div class="custom-divider"></div> <!-- Linha acima do título -->
+
+    <div class="about-section">
+        <h2 class="verde">Sobre a Feira</h2>
+        <p>A Feira de Produtores Rurais promove o melhor da produção local, conectando a comunidade ao campo.</p>
+        <p>Venha conhecer e apoiar os nossos produtores locais!</p>
+        <a href="sobre.php" class="btn btn-success">Saiba Mais</a>
+        <br><br>
+        
+        <!-- Linha decorativa com fade -->
+        <div class="custom-divider"></div>
+    </div>
+
+    <div class="container">
+        <h1 class="text-center">Feira dos Produtores Rurais de Patos de Minas</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Card 1 -->
-            <div class="col">
-                <div class="card h-100">
-                    <a href="produtor1.php">
-                        <img src="img/produtor2.jpg" class="card-img-top" alt="Barraca 1">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 1</h5>
-                        <p class="card-text">Descrição da barraca 1.</p>
+            <?php foreach ($produtores as $produtor): ?>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="produtor.php?produtor_id=<?php echo $produtor['id']; ?>">
+                            <img src="<?php echo $produtor['imagem']; ?>" class="card-img-top" alt="<?php echo $produtor['nome']; ?>">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $produtor['nome']; ?></h5>
+                            <p class="card-text"><?php echo $produtor['descricao']; ?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="img/FEIRA.jpg" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="img/PRODUTOR1.jpg" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="produtor1.php">
-                        <img src="img/produtor6.jpg" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="img/produtor3.jpg" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="img/produtor4.jpg" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="img/produtor5.jpg" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="img/produtor6.jpg" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <a href="URL_DO_PRODUTOR_2">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Barraca 2">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Barraca 2</h5>
-                        <p class="card-text">Descrição da barraca 2.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Repita para os demais cards, alterando os URLs -->
+            <?php endforeach; ?>
         </div>
     </div>
 
-    
-    <footer class="bg-light text-center text-lg-start mt-5">
-        <div class="container p-4">
-            <p class="text-center">© 2024 Feira de Produtores - Todos os direitos reservados</p>
-        </div>
-    </footer>
+    <!-- Linha decorativa antes do rodapé -->
+    <div class="custom-divider"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+<?php include "template/footer.php"; ?>

@@ -1,0 +1,79 @@
+body { 
+    background-color: #f9f1e4 !important;
+    font-family: Arial, sans-serif; /* Fonte padrão */
+}
+
+h1, h2, .card-title, .descricao-produtor {
+    font-family: Georgia, 'Times New Roman', serif; /* Georgia para títulos e descrição */
+}
+
+.verde { 
+    color: #4A8C4A; 
+}
+
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+h1 {
+    color: #4A8C4A; /* Cor verde gourmet */
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.card-img-top:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    background-color: #ffffff;
+    padding: 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.card-text {
+    color: #666;
+    font-size: 1rem;
+}
+
+.descricao-produtor {
+    font-size: 1.4rem; /* Ajuste conforme desejado */
+    line-height: 1.6;
+    color: #444;
+}
+
+.product-img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.product-img:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,82 @@
+body { 
+    background-color: #f9f1e4;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+h1, h2, .card-title, .about-section h2 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.about-section p {
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.btn-success, .card-text, p {
+    font-family: Arial, sans-serif;
+}
+
+body { background-color: #f9f1e4; }
+.container { margin-top: 50px; margin-bottom: 50px; }
+
+h1 {
+    color: #4A8C4A;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 5px; /* Subindo o título */
+    margin-bottom: 20px; /* Mantendo espaço com as barracas */
+}
+
+h2 {
+    margin-top: 10px;
+}
+
+/* Linha decorativa com efeito de fade */
+.custom-divider {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, transparent, #4A8C4A, transparent);
+    border-radius: 2px;
+    margin: 15px 0; /* Menor espaçamento ao redor da linha */
+}
+
+.about-section {
+    padding: 10px 0 10px 0; /* Reduzido o padding inferior */
+    text-align: center;
+}
+
+.about-section a.btn-success {
+    margin-bottom: 10px;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.card-img-top:hover { transform: scale(1.05); }
+.card-body {
+    background-color: #ffffef;
+    padding: 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.card-title { font-size: 1.5rem; color: #333; }
+.card-text { color: #666; font-size: 1rem; }
+.carousel-inner img { width: 100%; height: 400px; object-fit: cover; }
+.about-section h2 { font-size: 2.5rem; margin-bottom: 20px; color: #4A8C4A; }
+.about-section p { font-size: 1.2rem; margin-bottom: 10px; }
+.btn-success { background-color: #4A8C4A; }
+.verde { color: #4A8C4A; }

@@ -1,0 +1,89 @@
+.caixa {
+        background-color: #ffffef !important;
+    }
+body {
+    background-color: #f9f1e4; /* Fundo bege */
+}
+
+h2, h3 {
+    color: #4A8C4A; /* Cor verde gourmet */
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.btn-primary, .btn-secondary {
+    background-color: #4A8C4A;
+    border-color: #4A8C4A;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    background-color: #3a6f3a; /* Cor mais escura para hover */
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    max-height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.card img:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    background-color: #ffffef; /* Fundo creme */
+    padding: 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.card-text {
+    color: #666;
+    font-size: 1rem;
+}
+
+.modal-header, .modal-footer {
+    background-color: #f9f1e4;
+}
+
+.modal-title {
+    color: #4A8C4A;
+}
+
+.btn-secondary {
+    background-color: #666;
+    border-color: #666;
+}
+
+.btn-secondary:hover {
+    background-color: #555;
+
+}
